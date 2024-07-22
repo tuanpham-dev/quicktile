@@ -214,11 +214,15 @@ def make_winsplit_positions(columns: int,
         'center': [gvlay(width, 1, 'center') for width in center_steps],
     }
 
-    for grav in ('top', 'bottom'):
-        positions[grav] = [gvlay(width, 0.5, grav) for width in center_steps]
+    for grav in ('top'):
+        positions[grav] = [gvlay(width, 0.6, grav) for width in center_steps]
+    for grav in ('bottom'):
+        positions[grav] = [gvlay(width, 0.4, grav) for width in center_steps]
     for grav in ('left', 'right'):
         positions[grav] = [gvlay(width, 1, grav) for width in edge_steps]
-    for grav in ('top-left', 'top-right', 'bottom-left', 'bottom-right'):
-        positions[grav] = [gvlay(width, 0.5, grav) for width in edge_steps]
+    for grav in ('top-left', 'top-right'):
+        positions[grav] = [gvlay(width, 0.6, grav) for width in edge_steps]
+    for grav in ('bottom-left', 'bottom-right'):
+        positions[grav] = [gvlay(width, 0.4, grav) for width in edge_steps]
 
     return positions
