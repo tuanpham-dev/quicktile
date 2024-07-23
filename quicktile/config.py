@@ -21,6 +21,7 @@ DEFAULTS: Dict[str, CfgDict] = {
         # Use Ctrl+Alt as the default base for key combinations
         'ModMask': '<Ctrl><Alt>',
         'MovementsWrap': True,
+        'TopPercent': 50,
         'ColumnCount': 3,
         'MarginX_Percent': 0,
         'MarginY_Percent': 0,

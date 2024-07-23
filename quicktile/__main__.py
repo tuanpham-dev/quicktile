@@ -207,6 +207,7 @@ def main() -> None:
 
     commands.cycle_dimensions = commands.commands.add_many(
         layout.make_winsplit_positions(
+            config.getfloat('general', 'TopPercent') / 100,
             config.getint('general', 'ColumnCount'),
             config.getfloat('general', 'MarginX_Percent') / 100,
             config.getfloat('general', 'MarginY_Percent') / 100

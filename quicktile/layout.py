@@ -170,7 +170,7 @@ class GravityLayout(object):  # pylint: disable=too-few-public-methods
                 round(height - (self.margin_y * 2), 10))
 
 
-def make_winsplit_positions(columns: int,
+def make_winsplit_positions(top_percent: int = 0.5, columns: int = 3,
                             margin_x: float = 0, margin_y: float = 0
                             ) -> Dict[str, List[PercentRectTuple]]:
     """Generate the classic WinSplit Revolution tiling presets
@@ -214,15 +214,15 @@ def make_winsplit_positions(columns: int,
         'center': [gvlay(width, 1, 'center') for width in center_steps],
     }
 
-    for grav in ('top'):
-        positions[grav] = [gvlay(width, 0.6, grav) for width in center_steps]
-    for grav in ('bottom'):
-        positions[grav] = [gvlay(width, 0.4, grav) for width in center_steps]
+    for grav in ('top',):
+        positions[grav] = [gvlay(width, top_percent, grav) for width in center_steps]
+    for grav in ('bottom',):
+        positions[grav] = [gvlay(width, 1 - top_percent, grav) for width in center_steps]
     for grav in ('left', 'right'):
         positions[grav] = [gvlay(width, 1, grav) for width in edge_steps]
     for grav in ('top-left', 'top-right'):
-        positions[grav] = [gvlay(width, 0.6, grav) for width in edge_steps]
+        positions[grav] = [gvlay(width, top_percent, grav) for width in edge_steps]
     for grav in ('bottom-left', 'bottom-right'):
-        positions[grav] = [gvlay(width, 0.4, grav) for width in edge_steps]
+        positions[grav] = [gvlay(width, 1 - top_percent, grav) for width in edge_steps]
 
     return positions
